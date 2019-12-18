@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!DOCTYPE html>
+
+<!-- <ul class="list-group">
+    <li class="list-group-item">Ship one</li>
+    <li class="list-group-item" *ngFor="let launch of launchData">{{ launch.rocket.rocket_name }}</li>
+</ul> -->
+<h1>SpaceX Launches</h1>
+<table>
+        
+</table>
+<div class="divider"></div>
+<table style="border-collapse: separate; width: 819px;">
+    <tr class="filter">
+            <th class="leftFilter"></th>
+            <th class="midFilter">
+                <button class="refresh" (click) = "getData()"><img src="assets/images/refresh.svg" width="15px" height="15px"></button>
+            </th>
+            <th class="midFilter" style="text-align: right;">
+                <!-- <input type="checkbox" name="Land Success" value="Land Success"> Land Success -->
+                <button class="check" id="land" (click)="checkbox(0)"></button> LAND SUCCESS
+                <div class="widthDivider"></div>
+                <!-- <input type="checkbox" name="Reused" value="Reused"> Reused -->
+                <button class="check" id="reused" (click)="checkbox(1)"></button> REUSED
+                <div class="widthDivider"></div>
+                <!-- <input type="checkbox" name="With Reddit" value="With Reddit"> With Reddit -->
+                <button class="check" id="reddit" (click)="checkbox(2)"></button> WITH REDDIT
+            </th>
+            <th class="rightFilter"></th>
+        </tr>
+</table>
+<table>
+    <tr class="header">
+            <th style="padding-left: 10px;" class="header">Badge</th>
+            <th class="header">Rocket Name</th>
+            <th class="header">Rocket Type</th>
+            <th class="header">Launch Date</th>
+            <th style="padding-right: 230px;" class="header">Details</th>
+            <th class="header">ID</th>
+            <th class="header">Article</th>
+        </tr>
+    <div class="divider">
+        <tr class="divider"></tr>
+    </div>
+    <ng-container *ngFor="let launch of launchData">
+        <tr class="data">
+            <th style="padding-left: 10px; text-align: center;" class="leftMost"><img [src]="launch.links.mission_patch_small" width="25px" height="25px"></th>
+            <th>{{ launch.rocket.rocket_name }}</th>
+            <th>{{ launch.rocket.rocket_type }}</th>
+            <th>{{ getDate(launch.launch_date_utc) }}</th>
+            <th class="overflow">{{ launch.details }}</th>
+            <th style="text-align: center;">{{ launch.flight_number }}</th>
+            <th class="rightMost">
+                <a href= {{launch.links.article_link}} target="_blank">
+                    <img src="assets/images/link.svg" width="15px" height="15px">
+                </a>
+            </th>
+        </tr>
+        <div class="divider">
+            <tr class="divider"></tr>
+        </div>
+    </ng-container>
+</table>

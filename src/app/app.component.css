@@ -1,0 +1,10 @@
+Html, body {
+    background-image: url('src/assets/images/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  } 
+
+.bg {
+  height: 0px;
+}
